@@ -117,7 +117,7 @@ const Main = () => {
               <label
                 style={{
                   fontSize: `${el.fontSize}px`,
-                  fontWeight: `${el.fontWeight}`,
+                  fontWeight: el.fontWeight,
                 }}
               >
                 {el.text}
@@ -129,7 +129,7 @@ const Main = () => {
                 value={el.text}
                 style={{
                   fontSize: `${el.fontSize}px`,
-                  fontWeight: `${el.fontWeight}`,
+                  fontWeight: el.fontWeight,
                 }}
                 readOnly
               />
