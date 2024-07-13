@@ -11,11 +11,13 @@ const Modal = ({ visible, onClose, onSave, element, initialConfig }) => {
   }, [initialConfig]);
 
   const handleChange = (e) => {
+    //setting the various input values
     const { name, value } = e.target;
     setConfig({ ...config, [name]: value });
   };
 
   const handleSave = () => {
+    //saving the modal
     onSave(config);
     onClose();
   };

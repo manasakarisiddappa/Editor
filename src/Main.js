@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Modal from "./Modal";
-import "./App.css"; // Ensure you have this CSS file for styling
+import "./App.css";
 
 const Main = () => {
   const [elements, setElements] = useState(
@@ -13,35 +13,42 @@ const Main = () => {
   const [selectedElementId, setSelectedElementId] = useState(null);
 
   useEffect(() => {
+    //updating the local storage on change of elements
     localStorage.setItem("elements", JSON.stringify(elements));
   }, [elements]);
 
   const addElement = (element, config) => {
+    //adding new element to the of type label or input or button
     setElements([...elements, { ...config, id: Date.now(), type: element }]);
   };
 
   const updateElement = (id, config) => {
+    //updating existing element with the new config
     setElements(
       elements.map((el) => (el.id === id ? { ...el, ...config } : el))
     );
   };
 
   const deleteElement = (id) => {
+    //deleting the element on press of delete button
     setElements(elements.filter((el) => el.id !== id));
   };
 
   const handleDrop = (e) => {
+    //on drop of the element this funciton will get executed
     e.preventDefault();
     const element = e.dataTransfer.getData("element");
     const elementId = e.dataTransfer.getData("elementId");
 
     if (element) {
+      //if new element from sidebar is dropped.
       const x = e.clientX;
       const y = e.clientY;
       setCurrentElement(element);
       setInitialConfig({ x, y });
       setModalVisible(true);
     } else if (elementId) {
+      // if existing element is moved and dropped
       const id = parseInt(elementId, 10);
       const offsetX = parseInt(e.dataTransfer.getData("offsetX"), 10);
       const offsetY = parseInt(e.dataTransfer.getData("offsetY"), 10);
@@ -56,17 +63,20 @@ const Main = () => {
   };
 
   const handleSelect = (id) => {
+    // when existing element is selected
     setSelectedElementId(id);
   };
 
   const handleKeyDown = (e) => {
     if (selectedElementId) {
       if (e.key === "Enter") {
+        // if enter key is pressed
         const element = elements.find((el) => el.id === selectedElementId);
         setCurrentElement(element.type);
         setInitialConfig(element);
         setModalVisible(true);
       } else if (e.key === "Delete") {
+        // if delete key is pressed
         deleteElement(selectedElementId);
         setSelectedElementId(null);
       }
@@ -74,6 +84,7 @@ const Main = () => {
   };
 
   useEffect(() => {
+    // to handle the key press events
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
