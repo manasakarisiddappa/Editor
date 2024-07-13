@@ -8,6 +8,7 @@
 - Elements are draggable within the page.
 - After selecting element, on press of enter the modal will be opened where settings can be configured.
 - After selecting element, on press of delete the element will be removed.
+- All the changes are stored on to the local storage.
 ![image](https://github.com/user-attachments/assets/1a785ee5-2640-4391-aeb3-8f3876a9e136)
 # Modal for editing
 ![image](https://github.com/user-attachments/assets/e2f1dcfc-96a8-42c0-87c7-a823b6647fe3)
