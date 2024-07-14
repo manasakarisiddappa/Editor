@@ -5,7 +5,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <h2>Blocks</h2>
+      <div className="sidebar-heading">Blocks</div>
       <div className="sidebar-content">
         {elements.map((element, index) => (
           <div

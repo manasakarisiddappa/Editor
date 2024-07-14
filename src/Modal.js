@@ -49,7 +49,7 @@ const Modal = ({ visible, onClose, onSave, element, initialConfig }) => {
                 className="value-border"
                 type="number"
                 name="x"
-                value={config.x}
+                value={parseInt(config.x)}
                 onChange={handleChange}
               />
             </div>
@@ -61,7 +61,7 @@ const Modal = ({ visible, onClose, onSave, element, initialConfig }) => {
                 className="value-border"
                 type="number"
                 name="y"
-                value={config.y}
+                value={parseInt(config.y)}
                 onChange={handleChange}
               />
             </div>
@@ -103,7 +103,11 @@ const Modal = ({ visible, onClose, onSave, element, initialConfig }) => {
             </div>
           </label>
         </div>
-        <button onClick={handleSave} className="btn">
+        <button
+          style={{ cursor: "pointer" }}
+          onClick={handleSave}
+          className="btn"
+        >
           Save Changes
         </button>
       </div>
