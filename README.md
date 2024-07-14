@@ -18,6 +18,8 @@
 ![image](https://github.com/user-attachments/assets/ccf0f966-02e7-4b99-b4ab-d9fef1222964)
 # Deleting input element
 ![image](https://github.com/user-attachments/assets/96d533d4-5474-464b-8f32-400ddf808484)
+# responsive feature implemented
+![image](https://github.com/user-attachments/assets/c1e6b8c8-042b-4d4d-959e-0cd79f409340)
 
 
 # Getting Started with Create React App
