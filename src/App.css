@@ -71,7 +71,7 @@
 
 .modal-content {
   background-color: #fff;
-  height: 480px;
+  height: 520px;
   width: 330px;
   padding: 30px;
   border-radius: 5px;
@@ -121,8 +121,9 @@
     width: calc(100% - 160px);
   }
 
-  .sidebar-element {
-    padding: 8px;
+  .sidebar-heading {
+    font-size: medium;
+    margin-bottom: 10px;
   }
 }
 
