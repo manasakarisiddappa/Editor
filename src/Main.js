@@ -42,8 +42,8 @@ const Main = () => {
 
     if (element) {
       //if new element from sidebar is dropped.
-      const x = e.clientX;
-      const y = e.clientY;
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
       setCurrentElement(element);
       setInitialConfig({ x, y });
       setModalVisible(true);
@@ -52,8 +52,8 @@ const Main = () => {
       const id = parseInt(elementId, 10);
       const offsetX = parseInt(e.dataTransfer.getData("offsetX"), 10);
       const offsetY = parseInt(e.dataTransfer.getData("offsetY"), 10);
-      const x = e.clientX - offsetX;
-      const y = e.clientY - offsetY;
+      const x = ((e.clientX - offsetX) / window.innerWidth) * 100;
+      const y = ((e.clientY - offsetY) / window.innerHeight) * 100;
       updateElement(id, { x, y });
     }
   };
@@ -94,8 +94,14 @@ const Main = () => {
   const handleDragStart = (e, id) => {
     const element = elements.find((el) => el.id === id);
     e.dataTransfer.setData("elementId", id);
-    e.dataTransfer.setData("offsetX", e.clientX - element.x);
-    e.dataTransfer.setData("offsetY", e.clientY - element.y);
+    e.dataTransfer.setData(
+      "offsetX",
+      e.clientX - (element.x / 100) * window.innerWidth
+    );
+    e.dataTransfer.setData(
+      "offsetY",
+      e.clientY - (element.y / 100) * window.innerHeight
+    );
   };
 
   return (
@@ -108,7 +114,7 @@ const Main = () => {
             className={`element ${
               el.id === selectedElementId ? "selected" : ""
             }`}
-            style={{ position: "absolute", left: el.x, top: el.y }}
+            style={{ position: "absolute", left: `${el.x}%`, top: `${el.y}%` }}
             onClick={() => handleSelect(el.id)}
             draggable
             onDragStart={(e) => handleDragStart(e, el.id)}

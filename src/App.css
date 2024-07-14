@@ -36,6 +36,10 @@ h2 {
   padding: 10px;
   border: 1px solid transparent;
   cursor: move;
+  text-align: center;
+  box-sizing: border-box;
+  max-width: 100%; /* Ensure elements do not exceed container width */
+  overflow-wrap: break-word; /* Break long words to prevent overflow */
 }
 
 .element.selected {
@@ -98,4 +102,68 @@ h2 {
   justify-content: space-between;
   padding-bottom: 20px;
   border-bottom: 1px solid #d1d5db;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 150px;
+  }
+
+  .page {
+    margin-right: 160px;
+    width: calc(100% - 160px);
+  }
+
+  .sidebar-element {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+    height: 20vh;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-shadow: none;
+  }
+  .sidebar-content {
+    display: flex;
+    justify-content: space-around;
+    margin-right: 20px;
+    gap: 10px;
+  }
+
+  .page {
+    margin-right: 0;
+    width: 100%;
+    height: 80vh;
+  }
+
+  .sidebar-element {
+    padding: 6px;
+    margin: 0;
+    flex: 1;
+  }
+
+  .modal-content {
+    height: 400px;
+    width: 230px;
+  }
+
+  .edit-values {
+    gap: 12px;
+    margin-top: 5px;
+  }
+
+  input {
+    width: 100%; /* Ensure input fields do not overflow */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+
+  .element {
+    max-width: 95%; /* Ensure elements do not exceed container width */
+    padding: 5px; /* Adjust padding for better fit on small screens */
+  }
 }

@@ -6,16 +6,18 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <h2>Blocks</h2>
-      {elements.map((element, index) => (
-        <div
-          key={index}
-          draggable
-          onDragStart={(e) => e.dataTransfer.setData("element", element)}
-          className="sidebar-element"
-        >
-          {element}
-        </div>
-      ))}
+      <div className="sidebar-content">
+        {elements.map((element, index) => (
+          <div
+            key={index}
+            draggable
+            onDragStart={(e) => e.dataTransfer.setData("element", element)}
+            className="sidebar-element"
+          >
+            {element}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
